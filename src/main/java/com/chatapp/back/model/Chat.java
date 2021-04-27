@@ -5,14 +5,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
-public class User {
+public class Chat {
 
     @Id
     private Integer id;
 
-    private String number, firstName, lastName;
+    private List<User> participants;
+    private List<Message> messages;
 }

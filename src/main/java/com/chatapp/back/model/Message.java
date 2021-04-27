@@ -9,10 +9,11 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
-public class User {
+public class Message {
 
     @Id
     private Integer id;
 
-    private String number, firstName, lastName;
+    private User from;
+    private String message;
 }
