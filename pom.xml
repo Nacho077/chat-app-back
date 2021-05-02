@@ -61,6 +61,10 @@
 			<artifactId>resilience4j-spring-boot2</artifactId>
 			<version>1.6.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
