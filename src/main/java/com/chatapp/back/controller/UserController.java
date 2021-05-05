@@ -25,6 +25,11 @@ public class UserController {
         userService.addUser(user);
     }
 
+    @PutMapping("/{id}/contacts/{idNewContact}")
+    public void addContact(@PathVariable Integer id, @PathVariable Integer idNewContact){
+        userService.addContact(id, idNewContact);
+    }
+
     @GetMapping("/{id}/contacts")
     public List<UserDTO> getContacts(@PathVariable Integer id){
         return userService.getContact(id);

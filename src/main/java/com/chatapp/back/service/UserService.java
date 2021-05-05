@@ -1,6 +1,6 @@
 package com.chatapp.back.service;
 
-import com.chatapp.back.converter.UserListToDTO;
+import com.chatapp.back.converter.UserToDTO;
 import com.chatapp.back.model.User;
 import com.chatapp.back.model.UserDTO;
 import com.chatapp.back.repository.UserRepository;
@@ -17,7 +17,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private UserListToDTO userListToDTO;
+    private UserToDTO userToDTO;
 
     public void addUser(User user){
         userRepository.save(user);
@@ -28,7 +28,19 @@ public class UserService {
                 .orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
     }
 
+    public UserDTO getDTOById(Integer id){
+        return userToDTO.convert(this.getById(id));
+    }
+
     public List<UserDTO> getContact(Integer id) {
-        return userListToDTO.convert(userRepository.findAll());
+        return this.getById(id).getContacts();
+    }
+
+    public void addContact(Integer id, Integer idNewContact) {
+        User user = this.getById(id);
+        UserDTO newContact = this.getDTOById(idNewContact);
+
+        user.getContacts().add(newContact);
+        userRepository.save(user);
     }
 }

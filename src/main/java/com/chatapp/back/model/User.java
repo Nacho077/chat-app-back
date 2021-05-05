@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,4 +16,5 @@ public class User {
     private Integer id;
 
     private String number, firstName, lastName;
+    private List<UserDTO> contacts;
 }
